@@ -2,10 +2,10 @@
 
 source "https://rubygems.org"
 
-gem "redacting-logger", "~> 1.4"
-gem "octokit", ">= 9.2", "< 11.0"
 gem "faraday-retry", "~> 2.2", ">= 2.2.1"
 gem "jwt", ">= 2.9.3", "< 4.0"
+gem "octokit", ">= 9.2", "< 11.0"
+gem "redacting-logger", "~> 1.4"
 
 group :development do
   gem "irb", "~> 1.15"
