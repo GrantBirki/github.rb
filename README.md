@@ -11,7 +11,17 @@ A light weight wrapper around octokit.rb for common GitHub related operations
 
 This library provides a comprehensive wrapper around the Octokit client for GitHub App authentication with automatic token refreshing, built-in retry logic, and rate limiting.
 
-### Basic Usage
+## Why would I want to use this? 💡
+
+You might want to copy/paste the [`lib/github.rb`](lib/github.rb) file into your project to hydrate an instance of [`octokit.rb`](https://github.com/octokit/octokit.rb) if you want the following:
+
+1. **You want to use GitHub App authentication**: This library handles the JWT token generation and refreshing automatically.
+2. **You want built-in retry logic**: It retries requests that fail due to rate limits or other transient errors (optionally with exponential backoff). You can also bypass this if you want to handle retries yourself.
+3. **You want to use any Octokit method**: This library delegates all methods to the underlying Octokit client, so you can use it just like you would with Octokit.
+4. **You want to avoid boilerplate code**: It simplifies the setup process for using Octokit with GitHub Apps, reducing the amount of code you need to write. Yay copy/paste!
+5. **You want to handle rate limits automatically**: It waits for the appropriate time when rate limits are hit, so you don't have to manage this manually.
+
+### Basic Usage 🔨
 
 ```ruby
 require_relative "path/to/github" # the relative path to the github.rb file
@@ -36,6 +46,9 @@ github = GitHub.new(
 # Use like any Octokit client
 repos = github.repos
 issues = github.search_issues("repo:owner/name is:open")
+
+# Disabling automatic retries for a single request
+issues = github.search_issues("repo:owner/name is:open", disable_retry: true)
 ```
 
 ### Environment Variables
