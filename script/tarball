@@ -1,0 +1,34 @@
+#! /usr/bin/env bash
+
+set -e
+
+source script/env "$@"
+
+echo -e "📦 ${BLUE}Building tarball${OFF}"
+
+# set BUILD_SHA and BUILD_BRANCH if they are not already set
+: "${BUILD_SHA:=$(git rev-parse HEAD)}"
+: "${BUILD_BRANCH:=$(git rev-parse --abbrev-ref HEAD)}"
+
+echo -e "- ${BLUE}BUILD_SHA${OFF}: $BUILD_SHA"
+echo -e "- ${BLUE}BUILD_BRANCH${OFF}: $BUILD_BRANCH\n"
+
+# setup a directory to store the built tarballs in
+mkdir -p "$TARBALL_DIR"
+
+# build and tag the docker image
+script/docker-build
+
+if [[ "$GITHUB_ACTIONS" == "true" ]]; then
+  # Ensure the tarballs directory has the correct permissions for the docker container...
+  # ... to write to the tarball dir when running in CI (Actions)
+  echo "setting permissions on $TARBALL_DIR (GitHub Actions)"
+  chmod -R 777 "$TARBALL_DIR"
+fi
+
+docker run -e "BUILD_BRANCH=$BUILD_BRANCH" -e "BUILD_SHA=$BUILD_SHA" -e "GITHUB_ACTIONS=$GITHUB_ACTIONS" \
+  -v "$TARBALL_DIR:/app/tarballs:rw" \
+  -v "$DIR/.git:/app/.git:ro" \
+  "$REPO_NAME:latest" script/build-deploy-tarball
+
+echo -e "✅ ${GREEN}Done${OFF} - tarball built${OFF}"

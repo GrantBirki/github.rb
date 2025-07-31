@@ -1,0 +1,8 @@
+services:
+  ruby-template:
+    container_name: ruby-template
+    restart: no # this is just a cli so we want it to run once and exit
+    command: ["script/server", "--production"]
+    build:
+      context: .
+      dockerfile: ./Dockerfile

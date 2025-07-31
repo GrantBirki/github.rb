@@ -1,0 +1,8 @@
+#! /usr/bin/env bash
+
+set -e
+
+source script/env "$@"
+
+# Add your own logic below for running a ruby application
+bundle exec ruby lib/cli.rb

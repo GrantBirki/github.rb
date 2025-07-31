@@ -1,0 +1,52 @@
+#! /usr/bin/env bash
+
+set -e
+
+source script/env "$@"
+
+# set the app dir as safe if we are running in CI (Actions)
+if [[ "$GITHUB_ACTIONS" == "true" ]]; then
+  echo "setting safe.directory to /app (GitHub Actions)"
+  git config --global --add safe.directory /app
+fi
+
+# setup a directory to store the built tarballs in
+mkdir -p "$TARBALL_DIR"
+
+# create a temporary directory for the build
+temp_dir=$(mktemp -d)
+trap "rm -rf $temp_dir" EXIT
+
+# set BUILD_SHA and BUILD_BRANCH if they are not already set
+: "${BUILD_SHA:=$(git rev-parse HEAD)}"
+: "${BUILD_BRANCH:=$(git rev-parse --abbrev-ref HEAD)}"
+
+# copy all files to the temporary directory
+git checkout-index --prefix="$temp_dir/" -a
+echo "$BUILD_SHA" > "$temp_dir/BUILD_SHA"
+echo "$BUILD_BRANCH" > "$temp_dir/BUILD_BRANCH"
+
+# enter the temporary directory, run script/bootstrap, and then go back to the original directory
+cd "$temp_dir"
+RUBY_ENV=production script/bootstrap
+
+# for debugging - view all the files in the temp dir (top level only)
+ls -lah
+
+cd -
+
+# determine tar verbosity
+TAR_VERBOSITY=${TAR_VERBOSITY:-"loud"}
+if [[ "$TAR_VERBOSITY" == "quiet" ]]; then
+    TAR_FLAGS="-zcf"
+else
+    TAR_FLAGS="-zcvf"
+fi
+
+# compress into a tarball
+tarball_name="${PLATFORM}-${ARCH}-${VERSION}-${BUILD_SHA}.tar.gz"
+tar $TAR_FLAGS "$TARBALL_DIR/$tarball_name" -C "$temp_dir" .
+
+echo -e "${BLUE}Deployment tarball ${GREEN}created${OFF}: $TARBALL_DIR/$tarball_name"
+echo -e "\n${BLUE}Tarball size${OFF}: $(du -h "$TARBALL_DIR/$tarball_name" | cut -f1)\n"
+echo -e "To ${PURPLE}unzip${OFF} the ${BLUE}tarball${OFF}, use (example):\n\ntar -zxvf $(basename "$TARBALL_DIR")/$tarball_name -C /path/to/destination\n"
