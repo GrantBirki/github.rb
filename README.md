@@ -14,7 +14,7 @@ This library provides a comprehensive wrapper around the Octokit client for GitH
 ### Basic Usage
 
 ```ruby
-require "github"
+require_relative "path/to/github" # the relative path to the github.rb file
 
 # Using environment variables
 github = GitHub.new
