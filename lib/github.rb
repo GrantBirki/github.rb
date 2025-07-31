@@ -19,6 +19,41 @@ class GitHub
   TOKEN_EXPIRATION_TIME = 2700 # 45 minutes
   JWT_EXPIRATION_TIME = 600 # 10 minutes
 
+  # Initializes a new GitHub App client with authentication and configuration
+  #
+  # @param log [Logger, nil] Custom logger instance. If nil, creates a RedactingLogger with level from GH_APP_LOG_LEVEL env var (default: INFO)
+  # @param app_id [Integer, nil] GitHub App ID from the App's settings page. If nil, reads from GH_APP_ID env var
+  # @param installation_id [Integer, nil] Installation ID from the organization's installations page. If nil, reads from GH_APP_INSTALLATION_ID env var
+  # @param app_key [String, nil] Private key for the GitHub App. Can be:
+  #   - File path ending in .pem (will read from file)
+  #   - Key string with \n escape sequences (will be normalized)
+  #   - nil (will read from GH_APP_KEY env var)
+  # @param app_algo [String, nil] JWT signing algorithm. If nil, reads from GH_APP_ALGO env var (default: RS256)
+  #
+  # @raise [RuntimeError] If required environment variables are not set when parameters are nil
+  # @raise [RuntimeError] If app_key file path is provided but file doesn't exist or is empty
+  #
+  # @example Basic usage with environment variables
+  #   # Set environment variables: GH_APP_ID, GH_APP_INSTALLATION_ID, GH_APP_KEY
+  #   github = GitHub.new
+  #
+  # @example Usage with explicit parameters
+  #   github = GitHub.new(
+  #     app_id: 12345,
+  #     installation_id: 87654321,
+  #     app_key: "-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-----\n"
+  #   )
+  #
+  # @example Usage with key file
+  #   github = GitHub.new(
+  #     app_id: 12345,
+  #     installation_id: 87654321,
+  #     app_key: "/path/to/private-key.pem"
+  #   )
+  #
+  # @note Installation IDs can be found at: https://github.com/organizations/<org>/settings/installations/<8_digit_id>
+  # @note App keys should be downloaded from the App's settings page in PEM format
+  # @note When using environment variables for keys, ensure newlines are escaped as \n in a single line string
   def initialize(log: nil, app_id: nil, installation_id: nil, app_key: nil, app_algo: nil)
     @log = log || create_default_logger
 
