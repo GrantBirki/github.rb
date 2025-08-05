@@ -10,7 +10,7 @@ gem "redacting-logger", "~> 1.4"
 group :development do
   gem "irb", "~> 1.15"
   gem "rspec", "~> 3.13"
-  gem "rubocop", "~> 1.77"
+  gem "rubocop", "~> 1.79"
   gem "rubocop-github", "~> 0.23"
   gem "rubocop-performance", "~> 1.25"
   gem "rubocop-rspec", "~> 3.6"
