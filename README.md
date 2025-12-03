@@ -74,6 +74,6 @@ export GH_APP_EXPONENTIAL_BACKOFF="false"         # Enable exponential backoff (
 ### Key Features
 
 - **Automatic token refresh**: Handles GitHub App token expiration automatically
-- **Built-in retries**: Configurable retry logic with optional exponential backoff
+- **Built-in retries**: Configurable retry logic with optional exponential back-off
 - **Rate limit handling**: Automatically waits when rate limits are hit
 - **Method delegation**: Use any Octokit method directly on the GitHub instance
