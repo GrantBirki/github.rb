@@ -86,7 +86,7 @@ GEM
     rdoc (6.14.2)
       erb
       psych (>= 4.0.0)
-    redacting-logger (1.5.0)
+    redacting-logger (1.5.1)
       logger (~> 1.6)
     regexp_parser (2.11.0)
     reline (0.6.2)
@@ -182,7 +182,7 @@ DEPENDENCIES
   irb (~> 1.15)
   jwt (>= 2.9.3, < 4.0)
   octokit (>= 9.2, < 11.0)
-  redacting-logger (~> 1.4)
+  redacting-logger (~> 1.5)
   rspec (~> 3.13)
   rubocop (~> 1.79)
   rubocop-github (~> 0.23)
