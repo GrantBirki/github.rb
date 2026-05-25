@@ -143,12 +143,13 @@ GEM
       addressable (>= 2.3.5)
       faraday (>= 0.17.3, < 3)
     securerandom (0.4.1)
-    sigstore (0.2.1)
+    sigstore (0.2.3)
+      logger
       net-http
       protobug_sigstore_protos (~> 0.1.0)
       uri
-    sigstore-cli (0.2.1)
-      sigstore (= 0.2.1)
+    sigstore-cli (0.2.3)
+      sigstore (= 0.2.3)
       thor
     simplecov (0.22.0)
       docile (~> 1.1)
