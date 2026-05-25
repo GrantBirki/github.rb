@@ -17,6 +17,8 @@ updates:
         dependency-type: "development"
         patterns:
           - "*"
+    cooldown:
+      default-days: 45
   - package-ecosystem: github-actions
     directory: "/"
     groups:
@@ -27,3 +29,5 @@ updates:
       interval: weekly
       day: "tuesday"
       time: "21:00"
+    cooldown:
+      default-days: 45
