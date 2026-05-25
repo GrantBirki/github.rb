@@ -1,4 +1,4 @@
-name: lint
+name: acceptance
 
 on:
   push:
@@ -10,8 +10,8 @@ permissions:
   contents: read
 
 jobs:
-  lint:
-    name: lint
+  acceptance:
+    name: acceptance
     runs-on: ubuntu-latest
 
     steps:
@@ -38,5 +38,5 @@ jobs:
       - name: bootstrap
         run: script/bootstrap
 
-      - name: lint
-        run: script/lint
+      - name: acceptance
+        run: script/acceptance

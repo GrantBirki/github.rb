@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+
+set -e
+
+source script/env "$@"
+
+echo -e "\n🧪 ${BLUE}Running acceptance tests: $(date "+%H:%M:%S")${OFF}\n"
+
+bundle exec rspec spec/acceptance

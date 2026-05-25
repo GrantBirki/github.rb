@@ -1,6 +1,7 @@
 # github.rb 🧰
 
 [![test](https://github.com/GrantBirki/github.rb/actions/workflows/test.yml/badge.svg)](https://github.com/GrantBirki/github.rb/actions/workflows/test.yml)
+[![acceptance](https://github.com/GrantBirki/github.rb/actions/workflows/acceptance.yml/badge.svg)](https://github.com/GrantBirki/github.rb/actions/workflows/acceptance.yml)
 [![lint](https://github.com/GrantBirki/github.rb/actions/workflows/lint.yml/badge.svg)](https://github.com/GrantBirki/github.rb/actions/workflows/lint.yml)
 
 ## About ⭐
@@ -77,3 +78,20 @@ export GH_APP_EXPONENTIAL_BACKOFF="false"         # Enable exponential backoff (
 - **Built-in retries**: Configurable retry logic with optional exponential back-off
 - **Rate limit handling**: Automatically waits when rate limits are hit
 - **Method delegation**: Use any Octokit method directly on the GitHub instance
+
+### Installation Token Safety
+
+GitHub App installation access tokens are opaque values. Do not length-check them, decode them, parse them as JWTs, validate them with regular expressions, log them, or store them in narrow database columns. GitHub is rolling out a longer stateless token format, so callers should pass the token through exactly as returned by GitHub.
+
+### Development
+
+This repo follows the script-first Ruby workflow from [`ruby-template`](https://github.com/GrantBirki/ruby-template):
+
+```bash
+script/bootstrap
+script/test
+script/acceptance
+script/lint
+```
+
+Dependencies are locked, checksummed, and vendored in `vendor/cache`. Use `script/vendor` for intentional dependency refreshes; it updates the lockfile and gem cache through the repo-owned path.
