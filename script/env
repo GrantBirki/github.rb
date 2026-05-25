@@ -36,6 +36,7 @@ export TARBALL_DIR
 export RBENV_VERSION
 
 # set the path to include the rbenv shims if they exist
+[ -d "$HOME/.rbenv/shims" ] && export PATH="$HOME/.rbenv/shims:$PATH"
 [ -d "/usr/share/rbenv/shims" ] && export PATH=/usr/share/rbenv/shims:$PATH
 
 # detect OS version and architecture

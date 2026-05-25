@@ -9,6 +9,7 @@ vendor/gems/
 .local/
 .DS_Store
 .lesshst
+*.pem
 *.key
 *.crt
 *.csr
