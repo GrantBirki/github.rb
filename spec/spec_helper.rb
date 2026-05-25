@@ -6,7 +6,6 @@
 
 require "simplecov"
 require "rspec"
-require "simplecov-erb"
 
 TIME_MOCK = "2025-01-01T00:00:00Z"
 
@@ -16,8 +15,7 @@ SimpleCov.root File.expand_path("..", File.dirname(__FILE__))
 SimpleCov.coverage_dir COV_DIR
 
 SimpleCov.formatters = [
-  SimpleCov::Formatter::HTMLFormatter,
-  SimpleCov::Formatter::ERBFormatter
+  SimpleCov::Formatter::HTMLFormatter
 ]
 
 SimpleCov.minimum_coverage 100
