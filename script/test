@@ -104,7 +104,9 @@ workflow_paths.each do |path|
       unless fence["uses"] == "openai/fence@db291f5c51949e6e6ec1634621b36dc4bbf3d54a"
         failures << "#{relative}:#{job_name} must run Fence v0.8.7 as the first step"
       end
-      failures << "#{relative}:#{job_name} Fence must use audit mode" unless fence.fetch("with", {})["mode"] == "audit"
+      unless fence.fetch("with", {}).fetch("mode", "block") == "block"
+        failures << "#{relative}:#{job_name} Fence must enforce egress"
+      end
     end
 
     steps.each do |step|
