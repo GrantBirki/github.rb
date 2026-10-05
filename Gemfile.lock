@@ -61,7 +61,7 @@ GEM
     racc (1.8.1)
     rack (3.2.6)
     rainbow (3.1.1)
-    redacting-logger (1.5.1)
+    redacting-logger (1.5.2)
       logger (~> 1.6)
     regexp_parser (2.12.0)
     rexml (3.4.4)
@@ -180,7 +180,7 @@ CHECKSUMS
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
   rack (3.2.6) sha256=5ed78e1f73b2e25679bec7d45ee2d4483cc4146eb1be0264fc4d94cb5ef212c2
   rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
-  redacting-logger (1.5.1) sha256=a58533314112f9b5b9a33ea09813439dab7847606228ba69025177c558be1141
+  redacting-logger (1.5.2) sha256=62863ea0c62bc32bec869e6c7f690ccc5a6ec78ce7b59312c7f48e0e3438d236
   regexp_parser (2.12.0) sha256=35a916a1d63190ab5c9009457136ae5f3c0c7512d60291d0d1378ba18ce08ebb
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
   rspec (3.13.2) sha256=206284a08ad798e61f86d7ca3e376718d52c0bc944626b2349266f239f820587
