@@ -39,7 +39,7 @@ GEM
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     json (2.21.2)
-    jwt (3.2.0)
+    jwt (3.3.0)
       base64
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
@@ -61,7 +61,7 @@ GEM
     racc (1.8.1)
     rack (3.2.6)
     rainbow (3.1.1)
-    redacting-logger (1.5.1)
+    redacting-logger (1.5.2)
       logger (~> 1.6)
     regexp_parser (2.12.0)
     rexml (3.4.4)
@@ -166,7 +166,7 @@ CHECKSUMS
   hashdiff (1.2.1) sha256=9c079dbc513dfc8833ab59c0c2d8f230fa28499cc5efb4b8dd276cf931457cd1
   i18n (1.15.2) sha256=00f9eb62412fe593b2a65a97daa75300d37abb8f7202ec748e94b6d46a9dd1b5
   json (2.21.2) sha256=1f1d3b7cf2b3ba1a69beca0bb6db13d5438b80bff3cd54cdaaa620b9b07c1c6a
-  jwt (3.2.0) sha256=5419b1fe37b1da0982bd07051f573a8b8789ab724c2aa7e785e4784a3ed217d7
+  jwt (3.3.0) sha256=44cc34fbc341c148233cf66641522b4bce0dfb1ce55e8073f05c56f44f4ee546
   language_server-protocol (3.17.0.5) sha256=fd1e39a51a28bf3eec959379985a72e296e9f9acfce46f6a79d31ca8760803cc
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
@@ -180,7 +180,7 @@ CHECKSUMS
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
   rack (3.2.6) sha256=5ed78e1f73b2e25679bec7d45ee2d4483cc4146eb1be0264fc4d94cb5ef212c2
   rainbow (3.1.1) sha256=039491aa3a89f42efa1d6dec2fc4e62ede96eb6acd95e52f1ad581182b79bc6a
-  redacting-logger (1.5.1) sha256=a58533314112f9b5b9a33ea09813439dab7847606228ba69025177c558be1141
+  redacting-logger (1.5.2) sha256=62863ea0c62bc32bec869e6c7f690ccc5a6ec78ce7b59312c7f48e0e3438d236
   regexp_parser (2.12.0) sha256=35a916a1d63190ab5c9009457136ae5f3c0c7512d60291d0d1378ba18ce08ebb
   rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
   rspec (3.13.2) sha256=206284a08ad798e61f86d7ca3e376718d52c0bc944626b2349266f239f820587
