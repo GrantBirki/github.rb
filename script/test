@@ -101,7 +101,7 @@ workflow_paths.each do |path|
       unless job["runs-on"] == "ubuntu-latest"
         failures << "#{relative}:#{job_name} must run on ubuntu-latest"
       end
-      unless fence["uses"] == "openai/fence@7cba9082252803421a0e433f29198de6d0063221"
+      unless fence["uses"] == "openai/fence@7703f3be10ee3d0a84e1839233e19fa00bb254a8"
         failures << "#{relative}:#{job_name} must run Fence v0.13.0 as the first step"
       end
       unless fence.fetch("with", {}).fetch("mode", "block") == "block"
